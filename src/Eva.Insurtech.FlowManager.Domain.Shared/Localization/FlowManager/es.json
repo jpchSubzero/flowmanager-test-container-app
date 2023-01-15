@@ -1,0 +1,47 @@
+{
+  "culture": "es",
+  "texts": {
+    "FLOW": "Flujo",
+    "FLOWS": "Flujos",
+    "FLOW_STEP": "Paso de flujo",
+    "FLOW_STEPS": "Pasos de flujos",
+    "TRACKING": "Rastreo",
+    "TRACKINGS": "Rastreos",
+    "CONTEXT": "contexto",
+    "CONTEXTS": "contextos",
+    "PRODUCT": "producto",
+    "PRODUCTS": "productos",
+    "CATALOG": "catálogo",
+    "CATALOGS": "catálogos",
+    "API_SERVICE": "servicio externo",
+    "API_SERVICES": "servicios externos",
+    "STATE": "estado",
+    "STATES": "estados",
+    "GENERAL_STATE": "estado general",
+    "GENERAL_STATES": "estados generales",
+    "FAILURE_LOG": "registro de falla",
+    "FAILURE_LOGS": "registro de fallas",
+    "START_LABEL": "iniciar",
+    "END_LABEL": "finalizar",
+    "CLOSE_LABEL": "cerrar",
+    "PROCESS_LOG": "registro de datos de proceso",
+    "PROCESS_LOGS": "registro de datos de procesos",
+    "SUB_STEP_LOG": "registro de paso intermedio",
+    "SUB_STEP_LOGS": "registro de pasos intermedios",
+    "ID": "id",
+    "SERVICE": "servicio",
+    "SERVICE_TODAY": "servicio diario",
+    "TRANSACTION_REFERENCE": "transaction reference",
+    "PRE_TRACKING": "pre tracking",
+    "PRE_TRACKINGS": "pre trackings",
+    "PRE_TRACKING_STEP": "paso de pre tracking",
+    "PRE_TRACKING_STEPS": "pasos de pre tracking",
+    "REQUEST_LOG": "request log",
+    "REQUEST_LOGS": "request logs",
+    "REQUEST_LOG_REQUEST": "request de request log",
+    "REQUEST_LOG_REQUESTS": "requests de request log"
+  }
+}
+
+
+

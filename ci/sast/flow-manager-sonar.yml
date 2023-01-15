@@ -1,0 +1,29 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+resources:
+  repositories:
+    - repository: "Eva.Insurtech.Shared"
+      name: "EVA/Eva.Insurtech.Shared"
+      type: git
+      ref: develop
+
+trigger: none
+name: $(date:yyyyMMdd)$(rev:.r)
+
+jobs:
+  - job: Job_1
+    displayName: Static Application Security Testing
+    pool:
+      vmImage: windows-latest
+      
+    steps:
+      - template: pipelines/sonar-back-template.yml@Eva.Insurtech.Shared
+        parameters:
+          buildConfiguration: "Release"
+          sonarCloud: "SonarCloud-Eva.Insurtech.FlowManager"
+          organization: "centrodigitalnova"
+          projectKey: "CentroDigitalNova_Eva.Insurtech.FlowManager"
+          projectName: "Eva.Insurtech.FlowManager"

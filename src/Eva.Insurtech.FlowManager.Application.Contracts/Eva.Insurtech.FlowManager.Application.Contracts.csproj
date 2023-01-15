@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+ <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Eva.Insurtech.FlowManager</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <Compile Remove="PreTrackings\NewFolder\**" />
+	  <EmbeddedResource Remove="PreTrackings\NewFolder\**" />
+	  <None Remove="PreTrackings\NewFolder\**" />
+	  <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="7.0.0" />
+    <ProjectReference Include="..\Eva.Insurtech.FlowManager.Domain.Shared\Eva.Insurtech.FlowManager.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
+    <PackageReference Update="Fody" Version="6.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

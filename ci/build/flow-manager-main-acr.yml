@@ -1,0 +1,40 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+resources:
+  repositories:
+    - repository: "Eva.Insurtech.Shared"
+      name: "EVA/Eva.Insurtech.Shared"
+      type: git
+      ref: main
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - "ci/"
+      - "k8s/"
+      - "db/"
+name: $(date:yyyyMMdd)$(rev:.r)
+
+jobs:
+  - job: Job_1
+    displayName: Build, test and push image to ACR
+    pool:
+      vmImage: ubuntu-latest
+      
+    steps:
+      - template: pipelines/build-back-template.yml@Eva.Insurtech.Shared
+        parameters:
+          buildConfiguration: "Release"
+          projectPath: "host/Eva.Insurtech.FlowManager.HttpApi.Host"
+          projectFile: "Eva.Insurtech.FlowManager.HttpApi.Host.csproj"
+          imageRepository: "prod-eva-flowmanager"
+          containerRegistry: "acrcdnprod"
+          projectEntityPath: "src/Eva.Insurtech.FlowManager.EntityFrameworkCore/Eva.Insurtech.FlowManager.EntityFrameworkCore.csproj"
+          databaseContexts: "FlowManagerDbContext"

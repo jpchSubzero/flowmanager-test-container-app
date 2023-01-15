@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+COPY out /app
+#ENV ASPNETCORE_URLS=http://+:5000
+#ENV ASPNETCORE_ENVIRONMENT=Production
+WORKDIR /app
+ENTRYPOINT ["dotnet", "Eva.Insurtech.FlowManager.HttpApi.Host.dll"]
+
+

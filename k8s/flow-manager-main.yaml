@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: #{appName}#
+spec:
+  selector:
+    app: #{appName}#
+  ports:
+    - protocol: TCP
+      port: #{svcPort}#
+      targetPort: #{cntrPort}#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: #{appName}#
+  labels:
+    app: #{appName}#
+spec:
+  replicas: #{minReplicas}#
+  revisionHistoryLimit: #{historyNumber}#
+  selector:
+    matchLabels:
+      app: #{appName}#
+  template:
+    metadata:
+      labels:
+        app: #{appName}#
+    spec:
+      containers:
+        - name: #{appName}#
+          image: #{acrLoginServer}#/#{imageName}#:#{Build.BuildId}#
+          ports:
+            - containerPort: #{cntrPort}#
+          resources:
+            requests:
+              cpu: #{cpuRequests}#
+              memory: #{memoryRequests}#
+            limits:
+              cpu: #{cpuLimits}#
+              memory: #{memoryLimits}#
+          volumeMounts:
+            - name: #{appName}#
+              mountPath: #{vlmMounthPath}#
+              readOnly: true
+            - name: ai-#{appName}#
+              mountPath: /tmp/app-insights
+      volumes:
+        - name: #{appName}#
+          secret:
+            secretName: #{appName}#
+        - name: ai-#{appName}#
+          emptyDir: {}
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: #{appName}#-hpa
+spec:
+  maxReplicas: #{maxReplicas}#
+  minReplicas: #{minReplicas}#
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: #{appName}#
+  targetCPUUtilizationPercentage: #{targetCPU}#
