@@ -5,8 +5,11 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY . .
-WORKDIR /src/host/Eva.Insurtech.Product.HttpApi.Host
-RUN dotnet restore -nowarn:msb3202,nu1503
+WORKDIR /src/host/Eva.Insurtech.FlowManager.HttpApi.Host
+
+COPY ./NuGet.Config ./
+
+RUN dotnet restore -nowarn:msb3202,nu1503 --configfile ./NuGet.Config
 RUN dotnet build --no-restore -c Release -o /app/build
 
 FROM build AS publish
@@ -16,5 +19,3 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Eva.Insurtech.FlowManager.HttpApi.Host.dll"]
-
-

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Eva.Framework.Utility</id>
+    <version>0.2.8-beta</version>
+    <authors>Eva.Framework.Utility</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Azure.Identity" version="1.6.0" exclude="Build,Analyzers" />
+        <dependency id="Azure.Security.KeyVault.Secrets" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="BouncyCastle.NetCore" version="1.9.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Options" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
